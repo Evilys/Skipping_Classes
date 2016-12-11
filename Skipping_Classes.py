@@ -8,13 +8,13 @@ import cookielib
 import re
 
 print  '============================================'
-print  '               ½­Ö°¿õ¿Î²éÑ¯              		'
+print  '               æ±ŸèŒæ—·è¯¾æŸ¥è¯¢              		'
 print  '            ver 0.1 20161210                '
 print  '============================================'
 print  '\n'
 
-user = raw_input('Ñ§ºÅ: ')
-password = raw_input('ÃÜÂë: ')
+user = raw_input('å­¦å·: ')
+password = raw_input('å¯†ç : ')
 
 session = requests.session()
 
@@ -33,7 +33,7 @@ login_random_code = re.findall(r'name="actionmi" value="(.*?)">',lgoin_random)
 login_post_01 = session.post('http://jwxt.jmpt.cn:8125/JspHelloWorld/servlets/CommonServlet',data={'pageId':'000101','actionId':'login','actionmi':login_random_code[0]})
 
 login_payload = {
-	'radiobutton' : 'student', 'pageId' : '000101', 'actionId' : 'login', 'actionmi' : 'm10', 'username' : user, 'password' : password, 'validate' : 'abc', 'osname':'other,?õô:pc'
+	'radiobutton' : 'student', 'pageId' : '000101', 'actionId' : 'login', 'actionmi' : 'm10', 'username' : user, 'password' : password, 'validate' : 'abc', 'osname':'other,?è±¸:pc'
 }
 login = session.post('http://jwxt.jmpt.cn:8125/JspHelloWorld/servlets/CommonServlet',data=login_payload)
 
@@ -41,19 +41,19 @@ login_content = session.post('http://jwxt.jmpt.cn:8125/JspHelloWorld/servlets/Co
 
 skip_classes = session.get('http://jwxt.jmpt.cn:8125/JspHelloWorld/BjKqQuery.jsp').content
 
-if 'µ±Ç°ÔÚÏßÈËÊı' not in skip_classes:
-	print '\n','ÕËºÅ»òÕßÃÜÂë´íÎó¡£¡£¡£¡£¡£'
+if 'å½“å‰åœ¨çº¿äººæ•°' not in skip_classes:
+	print '\n','è´¦å·æˆ–è€…å¯†ç é”™è¯¯ã€‚ã€‚ã€‚ã€‚ã€‚'
 else:
 	skip_classes_code = re.findall(r'<td align="center" class="admincls0">(.*?)</td>\s*<td align="center" class="admincls0">(.*?)</td>\s*<td align="center" class="admincls0">(.*?)</td>\s*<td align="center" class="admincls0">(.*?)</td>\s*<td class="admincls0">',skip_classes)
-	print '\n','Õı³£²éÑ¯¿õ¿Î½ÚÊı¡£¡£¡£¡£¡£¡£','\n'	
+	print '\n','æ­£å¸¸æŸ¥è¯¢æ—·è¯¾èŠ‚æ•°ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚','\n'	
 	if not skip_classes_code:
-		print 'ÄãÃ»ÓĞ¿õ¿Î£¬°ô°ôßÕ£¡'
+		print 'ä½ æ²¡æœ‰æ—·è¯¾ï¼Œæ£’æ£’å“’ï¼'
 	else:
 		n = 0
 		for q in skip_classes_code:
 			for j in q[-1]:
 				n += 1
-		print 'ÄãÒÑ¾­¿õÁË',n,'½Ú¿Î','\n'
+		print 'ä½ å·²ç»æ—·äº†',n,'èŠ‚è¯¾','\n'
 
 
 raw_input()
