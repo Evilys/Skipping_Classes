@@ -4,7 +4,6 @@
 # @Date:   2016-12-10 01:30:03
 
 import requests
-import cookielib
 import re
 
 print  '============================================'
