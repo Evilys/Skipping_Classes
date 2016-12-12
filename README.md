@@ -1,5 +1,5 @@
 # Skipping_Classes-
-Skipping Classes Inquire
+JMPT Skipping Classes Inquire
 
 查询旷课节数。
 
